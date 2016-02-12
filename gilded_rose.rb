@@ -25,13 +25,9 @@ def conjured?(item)
   item.name.include?("Conjured")
 end
 
-def degrading?(item)
-  !aging_well?(item) && !backstage_passes?(item)
-end
-
 def daily_change(item)
   change = 0
-  if degrading?(item)
+  if !aging_well?(item) && !backstage_passes?(item)
     change += -1
   else
     change += 1 + backstage_passes_change(item)
